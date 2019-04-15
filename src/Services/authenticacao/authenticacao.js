@@ -1,0 +1,1 @@
+export const usuarioAutenticado = () => localStorage.getItem("usuario-spmedgroup") !==null;
