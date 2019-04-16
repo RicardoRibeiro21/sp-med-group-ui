@@ -4,18 +4,19 @@ import { Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from "../src/Pages/Login/login";
-import Especializacao from '../src/Pages/Home/App';
+import Especializacao from '../src/Pages/Especizalicacoes/Especializacao';
+import App from '../src/Pages/Home/App';
+import Consultas from '../src/Pages/Consultas/Consultas';
 
     const rotas =  (
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/" component={Especializacao} />
+                <Route exact path="/" component={App} />
                 <Route path="/login" component={Login} />
-                {/* <Route path="/consultasMedico" component={ConsultasMedicos} />
-                <Route path="/consultasUsuarios" component={ConsultasUsuarios} />
-                <Route path="/Especializacoes" component={Especializacoes} />
-                <Route component={NaoEncontrada}/> */}
+                <Route path="/Especializacoes" component={Especializacao} />
+                <Route path="/Consultas" component={Consultas} />
+                {/* <Route component={NaoEncontrada}/> */} 
                 </Switch>
             </div>
         </Router>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { parseJwt } from '../../Services/authenticacao/authenticacao';
 
 class Login extends Component{
     constructor(){
@@ -30,9 +31,14 @@ class Login extends Component{
             {
                 console.log(data);
                 //Armazenando as informações do usuário no local storage para ser utilizado futuramente
-                localStorage.setItem("usuario-spmedgroup", data.data.token);                
-                //            
-                this.props.history.push("/especializacoes");                            
+                localStorage.setItem("usuario-spmedgroup", data.data.token);       
+                //Role customizada para conseguirmos pegar o link 
+                console.log(parseJwt().Role);
+                if(parseJwt().Role === "Administrador"){
+                    this.props.history.push("/Cadastros/cadastros")
+                } else{
+                    this.props.history.push("/Especializacoes");                                                
+                }                   
             }
              else {
               alert("Email ou senha inválido");

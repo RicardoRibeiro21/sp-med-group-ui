@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-class Especializacao extends Component {
+class App extends Component {
   render() {
     return (
       <div>
-          <div>eu</div>
-          <div>sou</div>
-          <div>mto</div>
-          <div>gay</div>
+          <div>Vamos</div>
+          <div>Programar</div>
+          <div>em</div>
+          <div>Latim</div>
       </div>
     );
   }
 }
 
-export default Especializacao;
+export default App;
