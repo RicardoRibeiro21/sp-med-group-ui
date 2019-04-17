@@ -7,6 +7,7 @@ import Login from "../src/Pages/Login/login";
 import Especializacao from '../src/Pages/Especizalicacoes/Especializacao';
 import App from '../src/Pages/Home/App';
 import Consultas from '../src/Pages/Consultas/Consultas';
+import Cadastros from './Pages/Cadastros/cadastros';
 
     const rotas =  (
         <Router>
@@ -16,6 +17,7 @@ import Consultas from '../src/Pages/Consultas/Consultas';
                 <Route path="/login" component={Login} />
                 <Route path="/Especializacoes" component={Especializacao} />
                 <Route path="/Consultas" component={Consultas} />
+                <Route path="/Cadastros" component={Cadastros} />
                 {/* <Route component={NaoEncontrada}/> */} 
                 </Switch>
             </div>
