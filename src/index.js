@@ -8,6 +8,8 @@ import Especializacao from '../src/Pages/Especizalicacoes/Especializacao';
 import App from '../src/Pages/Home/App';
 import Consultas from '../src/Pages/Consultas/Consultas';
 import Cadastros from './Pages/Cadastros/cadastros';
+import Usuarios from './Pages/Listas/Usuarios';
+import Medicos from './Pages/Listas/Medicos';
 
     const rotas =  (
         <Router>
@@ -15,6 +17,8 @@ import Cadastros from './Pages/Cadastros/cadastros';
                 <Switch>
                 <Route exact path="/" component={App} />
                 <Route path="/login" component={Login} />
+                <Route path="/Medicos" component={Medicos} />
+                <Route path="/Usuarios" component={Usuarios}/>
                 <Route path="/Especializacoes" component={Especializacao} />
                 <Route path="/Consultas" component={Consultas} />
                 <Route path="/Cadastros" component={Cadastros} />
