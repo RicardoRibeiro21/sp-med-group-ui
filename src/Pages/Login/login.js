@@ -33,7 +33,8 @@ class Login extends Component{
                 //Armazenando as informações do usuário no local storage para ser utilizado futuramente
                 localStorage.setItem("usuario-spmedgroup", data.data.token);       
                 //Role customizada para conseguirmos pegar o link 
-                console.log(parseJwt().Role);
+                console.log(parseJwt());
+
                 if(parseJwt().Role === "Administrador"){
                     this.props.history.push("/Cadastros/cadastros")
                 } else{
