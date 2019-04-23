@@ -105,6 +105,7 @@ class Consultas extends Component {
                 </div>
             );
         }    else {       
+            if (parseJwt() === "Comum") {
                 return(
                     //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
                     <div>
@@ -131,6 +132,33 @@ class Consultas extends Component {
                         </div>
                     </div>
                 );
+            } else{
+                return(
+                    //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
+                    <div>
+                        <div>
+                            <table>
+                            <tbody>
+                            {
+                                this.state.consultas.map(function(consulta){
+                                    return(
+                                    <tr key={consulta.id}>
+                                    <td>Código consulta {consulta.id}</td>
+                                    <td>Paciente  {consulta.idProntuarioNavigation.idUsuarioNavigation.nome}</td>
+                                    <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
+                                    <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
+                                    <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
+                                    <td>Resultado  {consulta.resultado}</td>
+                                    <td>Data da Consulta  {consulta.dataConsulta}</td>
+                                    </tr>);                            
+                                })
+                            }
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                );  
+            }
             }
         }
     }
