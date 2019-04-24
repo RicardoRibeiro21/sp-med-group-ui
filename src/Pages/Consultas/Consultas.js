@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { parseJwt } from '../../Services/authenticacao/authenticacao';
+import '../../assets/css/consultas.css'
 
 const URL   = 'http://localhost:5001/api/Consultas';
 class Consultas extends Component {
@@ -80,9 +81,10 @@ class Consultas extends Component {
     render(){        
         if(parseJwt() === "Administrador"){                      
             return(
+
                 <div>
                     <div>
-                        <table>
+                        <table className="bordered striped centered">
                         <tbody>
                         {
                             this.state.consultas.map(function(consulta){
@@ -138,19 +140,29 @@ class Consultas extends Component {
                     <div>
                         <div>
                             <table>
-                            <tbody>
+                                <tbody>
+                                          <tr>
+                                            <th>Código</th>
+                                            <th>Paciente</th>
+                                            <th>Cpf</th>
+                                            <th>Rg</th>
+                                            <th>Situação da Consulta</th>
+                                            <th>Data Da consulta</th>
+                                            <th>Resultado</th>
+                                            </tr>                                                                        
                             {
                                 this.state.consultas.map(function(consulta){
                                     return(
                                     <tr key={consulta.id}>
-                                    <td>Código consulta {consulta.id}</td>
-                                    <td>Paciente  {consulta.idProntuarioNavigation.idUsuarioNavigation.nome}</td>
-                                    <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
-                                    <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
-                                    <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
-                                    <td>Resultado  {consulta.resultado}</td>
-                                    <td>Data da Consulta  {consulta.dataConsulta}</td>
-                                    </tr>);                            
+                                    <td> {consulta.id}</td>
+                                    <td>  {consulta.idProntuarioNavigation.idUsuarioNavigation.nome}</td>
+                                    <td>  {consulta.idProntuarioNavigation.cpf}</td>
+                                    <td>  {consulta.idProntuarioNavigation.rg}</td>
+                                    <td> {consulta.statusConsultaNavigation.situacao}</td>
+                                    <td> {consulta.dataConsulta}</td>
+                                    <td>  {consulta.resultado}</td>
+                                    </tr>
+                                    );                            
                                 })
                             }
                             </tbody>

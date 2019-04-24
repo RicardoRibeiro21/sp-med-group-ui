@@ -1,0 +1,23 @@
+table{
+    
+    border: 2px solid #22E096;
+    border-radius: 11px;                 
+    border-collapse: collapse;
+    text-align: left; 
+    width: 80%;
+}
+th{
+    padding: 0 0 0 1.1em;
+}
+tr, td{    
+    border-right: 2px solid #22E096;
+    width: 10%;
+    padding: 0 0 0 1.1em;  
+}
+tr{
+    height: 30px;
+}
+
+tr:nth-child(even){
+    background-color: rgba(34, 224, 151, 0.13)
+}

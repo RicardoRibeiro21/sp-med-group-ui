@@ -1,0 +1,141 @@
+* {
+    font-family: 'Gabriola';    
+}
+body{
+    width: 1370px;
+    height: auto;
+}
+
+.conteudo {
+    display: grid;
+    grid-template-columns: 40% 72%;
+}
+
+.titulo{
+    font-size: 1.9em;
+}
+.apresentacao-left{
+    display: grid;
+    width: 60%;
+    height: 70%;
+    font-size: 1.4em;    
+    text-align: center;    
+    margin: 15%;
+}
+
+.grid-auto-rows-1 {
+    grid-auto-rows: 20%;
+}
+
+img{
+    width: 60%;   
+}
+.icones {
+    width: 35%;   
+    margin-left: 50%;     
+}
+
+.footer {    
+    width: 60%;
+    height: 100%;
+}
+/* Para cada div, aplicar */
+.footer > div{
+    display: grid;
+    grid-template-columns: 30% 50%;
+}
+.login{        
+    background: indianred;    
+}
+
+
+
+#main {
+    background-image: url('../imagens/Fundo.jpg');
+    background-size: cover;
+    filter:drop-shadow(2px 8px 6px rgb(54, 22, 141)) opacity(90%);
+    background-color: blue;    
+    width: 100%;
+    height: 754px;
+    display: flex;
+    align-items: center;
+    justify-content: center;transform: translateZ(0);
+    z-index: 1;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    transition: color 1.2s linear;
+}
+/* Fim conteúdo da section main */
+/* div fazer login */
+.caixa {
+    background: #D0EBF0;
+    width: 45%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 12px;
+    
+    
+}
+
+.text-login {
+    width: 80%;
+    padding: 1.2em;
+    margin-left: 1.1em;
+    font-size: 1.4em
+}
+.text-login h2{
+    margin-top: 0.1em;
+    text-align: center;
+}
+.text-login input {
+    width: 100%;
+    height: 2em;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: none;    
+}
+
+.text-login p {
+    /* padding: 0.6em; */
+    text-align: left;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+
+.text-login ::placeholder {
+    text-align: left;
+}
+.text-login button {
+    width: 35%;    
+    text-align: center;
+    padding: 0.2em;
+    margin-top: 1.8em;
+    border-radius: 6px;
+    background-color: #00DFA9;
+    border: none;
+}
+
+@media screen and (max-width: 760px) {
+    #main{
+        width: 80%;
+    }
+    .caixa{
+        margin-left: 45%;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 460px) {
+    .caixa{
+        margin-left: 25%;
+        width: 100%;
+    }
+}
+
+
+/* Fim /div fazer login */
