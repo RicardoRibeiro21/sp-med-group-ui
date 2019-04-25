@@ -70,8 +70,8 @@ class Login extends Component {
                     </div>
                     </div>
                 <section id="main">
-                        <div class="caixa">
-                            <div class="text-login">
+                        <div className="caixa">
+                            <div className="text-login">
                                 <form onSubmit={this.efetualogin.bind(this)}>
                                     <h2>Login</h2>
                                     <p>Insira o email:</p>

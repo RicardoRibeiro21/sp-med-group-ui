@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import MenuNav from '../../Components/menuNav';
+import '../../assets/css/usuarios.css'
 class Usuarios extends  Component{
     constructor(){
         super();
@@ -30,10 +31,11 @@ class Usuarios extends  Component{
             headers: {
                 "Content-Type" : "application/json",
                 "Authorization" : 'Bearer ' + localStorage.getItem("usuario-spmedgroup") 
-            }
+            }            
         }
         )        
         .then(resposta => resposta)
+        .then(this.CarregarUsuarios())
         .catch( erro => console.log(erro))
         console.log(this.state.Email);
         
@@ -88,19 +90,28 @@ class Usuarios extends  Component{
         render(){
             return(
                 <div>
+                    <MenuNav />
                     <div>                    
                         <table>
                         <tbody>
+                            <tr>
+                                         <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Senha</th>
+                                            <th>Tipo de Usuário</th>
+                                            <th>Data de Nascimento</th>                                            
+                                            </tr>    
                         {
                             this.state.listaUsuarios.map(function(usuario){
                                 return(
                                 <tr key={usuario.id}>
-                                <td>Id {usuario.id}</td>
-                                <td>Nome {usuario.nome}</td>
-                                <td>Email  {usuario.email}</td>
-                                <td>Senha{usuario.senha}</td>
-                                <td>Tipo de Usuário{usuario.tipoUsuario.tipo}</td>
-                                <td>Data de Nascimento  {usuario.dataNascimento}</td>            
+                                <td>{usuario.id}</td>
+                                <td>{usuario.nome}</td>
+                                <td>{usuario.email}</td>
+                                <td>{usuario.senha}</td>
+                                <td>{usuario.tipoUsuario.tipo}</td>
+                                <td>{usuario.dataNascimento}</td>            
                                 </tr>);                            
                             })
                         }
@@ -108,13 +119,13 @@ class Usuarios extends  Component{
                         </table>
                     </div>
                      {/* Form para cadastrar Usuarios */}
-                <form onSubmit = {this.cadastrarUsuario.bind(this)}>
+                <form className="cadastro-user" onSubmit = {this.cadastrarUsuario.bind(this)}>
                     <input type="text" placeholder="Nome do Usuário" onChange={this.atualizaEstadoNome.bind(this)} value={this.state.Nome}/>                                      
                     <input type="text" placeholder="Senha" onChange={this.atualizaEstadoSenha.bind(this)} value={this.state.Senha}/>                                      
                     <input type="text" placeholder="Email" onChange={this.atualizaEstadoEmail.bind(this)} value={this.state.Email}/>                                      
                     <input type="date" placeholder="dd/mm/yyyy" onChange={this.atualizaEstadoDataNascimento.bind(this)} value={this.state.DataNascimento}/>                                       
-                    <select  value={this.state.IdTipoUsuario}  onChange={this.atualizaEstadoTipoUsuario.bind(this)}>
-                    <option  >Selecione : </option>
+                    <select className="select-user" value={this.state.IdTipoUsuario}  onChange={this.atualizaEstadoTipoUsuario.bind(this)}>
+                    <option>Selecione : </option>
                         {
                             this.state.listaTiposUsuarios.map((element) => {                             
                                 return <option key={element.id} value={element.id}>{element.tipo}

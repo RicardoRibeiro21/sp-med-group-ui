@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { parseJwt } from '../../Services/authenticacao/authenticacao';
 import '../../assets/css/consultas.css'
-
+import MenuNav from '../../Components/menuNav';
 const URL   = 'http://localhost:5001/api/Consultas';
 class Consultas extends Component {
     constructor(){
@@ -83,9 +83,21 @@ class Consultas extends Component {
             return(
 
                 <div>
+                    <MenuNav />
                     <div>
                         <table className="bordered striped centered">
                         <tbody>
+                        <tr>
+                                            <th>Código</th>
+                                            <th>Crm Médico</th>
+                                            <th>Id Médico</th>
+                                            <th>Cpf</th>
+                                            <th>Rg</th>
+                                            <th>Situação da Consulta</th>
+                                            <th>Data Da consulta</th>
+                                            <th>Resultado</th>
+                                            </tr>       
+                            
                         {
                             this.state.consultas.map(function(consulta){
                                 return(
@@ -96,8 +108,8 @@ class Consultas extends Component {
                                 <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
                                 <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
                                 <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
-                                <td>Resultado  {consulta.resultado}</td>
                                 <td>Data da Consulta  {consulta.dataConsulta}</td>
+                                <td>Resultado  {consulta.resultado}</td>
                                 </tr>);                            
                             })
                         }
@@ -111,21 +123,32 @@ class Consultas extends Component {
                 return(
                     //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
                     <div>
+                        <MenuNav />
                         <div>
                             <table>
                             <tbody>
+                            <tr>
+                                            <th>Código</th>
+                                            <th>Crm Médico</th>
+                                            <th>Médico (Pendente)</th>
+                                            <th>Cpf</th>
+                                            <th>Rg</th>
+                                            <th>Situação da Consulta</th>
+                                            <th>Data Da consulta</th>
+                                            <th>Resultado</th>
+                                            </tr>       
                             {
                                 this.state.consultas.map(function(consulta){
                                     return(
                                     <tr key={consulta.id}>
-                                    <td>Código consulta {consulta.id}</td>
-                                    <td>Crm Médico  {consulta.crmMedicoNavigation.crm}</td>
-                                    <td>Médico  (pendente){consulta.crmMedicoNavigation.idUsuarioNavigation.id}</td>
-                                    <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
-                                    <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
-                                    <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
-                                    <td>Resultado  {consulta.resultado}</td>
-                                    <td>Data da Consulta  {consulta.dataConsulta}</td>
+                                    <td>{consulta.id}</td>
+                                    <td>{consulta.crmMedicoNavigation.crm}</td>
+                                    <td>{consulta.crmMedicoNavigation.idUsuarioNavigation.id}</td>
+                                    <td>{consulta.idProntuarioNavigation.cpf}</td>
+                                    <td>{consulta.idProntuarioNavigation.rg}</td>
+                                    <td>{consulta.statusConsultaNavigation.situacao}</td>
+                                    <td>{consulta.dataConsulta}</td>
+                                    <td>{consulta.resultado}</td>
                                     </tr>);                            
                                 })
                             }
@@ -138,6 +161,7 @@ class Consultas extends Component {
                 return(
                     //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
                     <div>
+                        <MenuNav />
                         <div>
                             <table>
                                 <tbody>

@@ -53,13 +53,12 @@ img{
 #main {
     background-image: url('../imagens/Fundo.jpg');
     background-size: cover;
-    filter:drop-shadow(2px 8px 6px rgb(54, 22, 141)) opacity(90%);
-    background-color: blue;    
+    filter:drop-shadow(2px 8px 6px rgb(54, 22, 141)) opacity(90%);      
     width: 100%;
     height: 754px;
     display: flex;
     align-items: center;
-    justify-content: center;transform: translateZ(0);
+    justify-content: center;    
     z-index: 1;
 }
 

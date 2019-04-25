@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import MenuNav from "../../Components/menuNav";
+import '../../assets/css/especializacoes.css';
 
 class Especializacao extends Component{
     constructor(){
@@ -24,11 +25,13 @@ class Especializacao extends Component{
     render(){
         return(
             <div>
-            <div >{
+            <MenuNav />
+                <div className="grid">{                
                 this.state.listaEspecializacoes.map(function(especializacoes){
                     return(
-                    <p>{especializacoes.especializacao}</p>);})}</div>                   
-                    </div>
+                    <p className="espec">{especializacoes.especializacao}</p>);})}
+                </div>                   
+            </div>
         );
     }
 }

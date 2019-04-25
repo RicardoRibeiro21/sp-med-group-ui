@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ApiService from '../../Services/ApiService';
+import '../../assets/css/cadastros.css';
+import MenuNav from '../../Components/menuNav';
 
 const URL   = 'http://localhost:5001/api/Medicos';
 class Cadastros extends Component{
@@ -77,19 +79,21 @@ class Cadastros extends Component{
     render(){
         return(
             <div>
+                <MenuNav />
                 {/* Form para cadastrar Consultas */}
-                <form onSubmit = {this.cadastrarConsulta.bind(this)}>
-                    <input type="date" placeholder="dd/mm/yyyy" onChange={this.atualizaDataConsulta.bind(this)} value={this.state.dataConsulta}/>
-                    <input type="text" placeholder="Digite o id do prontuário" onChange={this.atualizaIdProntuario.bind(this)} value={this.state.idProntuario}/>                                      
-                    <select  value={this.state.CrmMedico}  onChange={this.atualizaEstadoCrmMedico.bind(this)}>
+                    <form className="grid-form" onSubmit = {this.cadastrarConsulta.bind(this)}>
+                <div><select  value={this.state.CrmMedico}  onChange={this.atualizaEstadoCrmMedico.bind(this)}>
                     <option  >Selecione : </option>
                         {
                             this.state.listaMedicos.map((element) => {
                                 return <option key={element.crm} value={element.crm}>{element.idUsuarioNavigation.nome}</option>
                             })
                     }
-                    </select>
-                    <button>Cadastrar</button>
+                    </select></div>                    
+                <div><input type="date" placeholder="dd/mm/yyyy" onChange={this.atualizaDataConsulta.bind(this)} value={this.state.dataConsulta}/></div>
+                    <div><input type="text" placeholder="Digite o id do prontuário" onChange={this.atualizaIdProntuario.bind(this)} value={this.state.idProntuario}/>                                      </div>
+                <div><button>Cadastrar</button></div>
+                    
                 </form>
                 
                

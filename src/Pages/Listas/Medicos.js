@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import MenuNav from '../../Components/menuNav';
+import '../../assets/css/usuarios.css'
 class Medicos extends  Component{
     constructor(){
         super();
@@ -9,6 +10,7 @@ class Medicos extends  Component{
             listEspecializacoes: [],
             idClinica: 1,
             crm: "",
+            mensagem: "",
             idUsuario: "",
             idEspecializacao: "",
                        
@@ -80,6 +82,10 @@ class Medicos extends  Component{
         }
         )        
         .then(resposta => resposta)
+        .then(
+            this.CarregarMedicos(),
+            this.setState({mensagem: "Medico cadastrado com sucesso"})
+        )
         .catch( erro => console.log(erro))
         console.log(this.state.medico);
         
@@ -104,18 +110,26 @@ class Medicos extends  Component{
         render(){
             return(
                 <div>
+                    <MenuNav />
                     <div>                    
                         <table>
                         <tbody>
+                        <tr>
+                                            <th>Crm</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Data de Nascimento</th>
+                                            <th>Especializacao</th>                                         
+                                            </tr>      
                         {
                             this.state.listaMedicos.map(function(medico){
                                 return(
                                 <tr key={medico.crm}>
-                                <td>Crm {medico.crm}</td>
-                                <td>Nome {medico.idUsuarioNavigation.nome}</td>
-                                <td>Email  {medico.idUsuarioNavigation.email}</td>                                                                
-                                <td>Data de Nascimento  {medico.idUsuarioNavigation.dataNascimento}</td>    
-                                <td>Especializacao {medico.idEspecializacaoNavigation.especializacao}</td>                                                                
+                                <td>{medico.crm}</td>
+                                <td>{medico.idUsuarioNavigation.nome}</td>
+                                <td>{medico.idUsuarioNavigation.email}</td>                                                                
+                                <td>{medico.idUsuarioNavigation.dataNascimento}</td>    
+                                <td>{medico.idEspecializacaoNavigation.especializacao}</td>                                                                
                                 </tr>);                            
                             })
                         }
@@ -123,9 +137,9 @@ class Medicos extends  Component{
                         </table>
                     </div>
                      {/* Form para cadastrar Medicos */}
-                <form onSubmit = {this.cadastrarMedico.bind(this)}>
+                <form className="cadastro-user" onSubmit = {this.cadastrarMedico.bind(this)}>
                     <input type="text" placeholder="Crm" value={this.state.crm} onChange={this.atualizaEstadoCrm.bind(this)} />                                                         
-                    <select  value={this.state.idEspecializacao}  onChange={this.atualizaEstadoIdEspecializacao.bind(this)}>
+                    <select className="select-userMed" value={this.state.idEspecializacao}  onChange={this.atualizaEstadoIdEspecializacao.bind(this)}>
                     <option  >Selecione : </option>
                         {
                             this.state.listEspecializacoes.map((element) => {                             
@@ -135,17 +149,17 @@ class Medicos extends  Component{
                     }     
                                       
                     </select>
-                    <select type="text" value={this.state.idUsuario}  onChange={this.atualizaEstadoIdUsuario.bind(this)}>
+                    <select className="select-userMed" type="text" value={this.state.idUsuario}  onChange={this.atualizaEstadoIdUsuario.bind(this)}>
                     <option  >Selecione : </option>
                         {
                             this.state.listaUsuarios.map((element) => {                             
                                 return <option key={element.id} value={element.id}>{element.nome}
                                  </option>                                
                             })
-                    }     
-                                      
+                        }                                        
                     </select>
                     <button>Cadastrar</button>
+                    <p className="text__login" style={{ color : 'green',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.mensagem}</p>
                 </form>
                 </div>
             );
