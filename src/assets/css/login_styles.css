@@ -2,13 +2,13 @@
     font-family: 'Gabriola';    
 }
 body{
-    width: 1370px;
+    width: 1530px;
     height: auto;
 }
 
 .conteudo {
     display: grid;
-    grid-template-columns: 40% 72%;
+    grid-template-columns: 36% 64%;
 }
 
 .titulo{
@@ -72,7 +72,7 @@ a{
 .caixa {
     background: #D0EBF0;
     width: 45%;
-    height: 45%;
+    height: 48%;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -85,7 +85,7 @@ a{
     width: 80%;
     padding: 1.2em;
     margin-left: 1.1em;
-    font-size: 1.4em
+    font-size: 1.2em
 }
 .text-login h2{
     margin-top: 0.1em;
@@ -97,6 +97,7 @@ a{
     box-sizing: border-box;
     border-radius: 6px;
     border: none;    
+    font-size: 1em;
 }
 
 .text-login p {

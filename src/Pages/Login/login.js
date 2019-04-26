@@ -50,7 +50,7 @@ class Login extends Component {
             })
             .catch(erro => {
                 console.log(erro)
-                this.setState({ erroMensagem: 'Email ou senha inválido' });
+                this.setState({ mensagem: 'Email ou senha inválido' });
             }
             )
     }
@@ -74,10 +74,11 @@ class Login extends Component {
                             <div className="text-login">
                                 <form onSubmit={this.efetualogin.bind(this)}>
                                     <h2>Login</h2>
-                                    <p>Insira o email:</p>
+                                    <p>Email:</p>
                                     <input type="text" onChange={this.atualizaEstadoEmail.bind(this)} value={this.state.email} placeholder="Insira seu email"></input>
-                                    <p>Insira a senha:</p>
+                                    <p>Senha:</p>
                                     <input type="password" onChange={this.atualizaEstadoSenha.bind(this)} value={this.state.senha} placeholder="Insira sua senha"></input>
+                                    <p className="text__login" style={{ color : 'red',  textAlign : 'center', fontSize : '0.8em' }}>{this.state.mensagem}</p>
                                     <button value="Entrar">Entrar</button>
                                 </form>
                             </div>

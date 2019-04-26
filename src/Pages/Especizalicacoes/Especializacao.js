@@ -26,6 +26,7 @@ class Especializacao extends Component{
         return(
             <div>
             <MenuNav />
+            <h1>Especializações</h1>
                 <div className="grid">{                
                 this.state.listaEspecializacoes.map(function(especializacoes){
                     return(

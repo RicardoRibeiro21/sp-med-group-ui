@@ -84,9 +84,8 @@ class Medicos extends  Component{
         .then(resposta => resposta)
         .then(
             this.CarregarMedicos(),
-            this.setState({mensagem: "Medico cadastrado com sucesso"})
-        )
-        .catch( erro => console.log(erro))
+            this.setState({mensagem: "Cadastro feito com sucesso!"}))
+            .catch(this.setState({erromensagem: "Dados preenchidos incorretamente."}))        
         console.log(this.state.medico);
         
        
@@ -109,8 +108,10 @@ class Medicos extends  Component{
     //-----------------------Fim para cadastrar Medico------------------------\\        
         render(){
             return(
+
                 <div>
                     <MenuNav />
+                    <h1>Lista de Médicos</h1>
                     <div>                    
                         <table>
                         <tbody>
@@ -137,6 +138,7 @@ class Medicos extends  Component{
                         </table>
                     </div>
                      {/* Form para cadastrar Medicos */}
+                     <h2>Cadastro de Médicos</h2>
                 <form className="cadastro-user" onSubmit = {this.cadastrarMedico.bind(this)}>
                     <input type="text" placeholder="Crm" value={this.state.crm} onChange={this.atualizaEstadoCrm.bind(this)} />                                                         
                     <select className="select-userMed" value={this.state.idEspecializacao}  onChange={this.atualizaEstadoIdEspecializacao.bind(this)}>
@@ -159,7 +161,8 @@ class Medicos extends  Component{
                         }                                        
                     </select>
                     <button>Cadastrar</button>
-                    <p className="text__login" style={{ color : 'green',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.mensagem}</p>
+                    <p className="text__login" style={{ color : 'blue',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.mensagem}</p>                
+                <p className="text__login" style={{ color : 'red',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.erromensagem}</p>             
                 </form>
                 </div>
             );

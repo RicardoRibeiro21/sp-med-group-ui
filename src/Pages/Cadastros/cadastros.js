@@ -14,7 +14,10 @@ class Cadastros extends Component{
             idProntuario: "",
             listaStatusConsulta: [],
             listaProntuario: [] ,            
-            listaMedicos: [],              
+            listaMedicos: [],  
+            mensagem: "",  
+            Erromensagem: ""          
+                      
         }     
     }
     ///Carregar antes da página
@@ -68,9 +71,9 @@ class Cadastros extends Component{
             }
         }
         )        
-        .then(resposta => resposta)
-        .catch( erro => console.log(erro))
-        console.log(this.state.CrmMedico);
+        .then(resposta => resposta, this.setState({mensagem: "Cadastro feito com sucesso!"}))
+        .then()
+        .catch(this.setState({Erromensagem: "Dados preenchidos incorretamente."}))        
     }
     //-----------------------Fim para cadastrar Consulta------------------------\\
 
@@ -81,18 +84,23 @@ class Cadastros extends Component{
             <div>
                 <MenuNav />
                 {/* Form para cadastrar Consultas */}
+                <h1>Cadastro de Consultas</h1>
                     <form className="grid-form" onSubmit = {this.cadastrarConsulta.bind(this)}>
                 <div><select  value={this.state.CrmMedico}  onChange={this.atualizaEstadoCrmMedico.bind(this)}>
-                    <option  >Selecione : </option>
+                    
+                    <option  >Selecione o Médico</option>
                         {
                             this.state.listaMedicos.map((element) => {
                                 return <option key={element.crm} value={element.crm}>{element.idUsuarioNavigation.nome}</option>
                             })
                     }
                     </select></div>                    
-                <div><input type="date" placeholder="dd/mm/yyyy" onChange={this.atualizaDataConsulta.bind(this)} value={this.state.dataConsulta}/></div>
+                <div><input type="date" placeholder="Data da consulta" onChange={this.atualizaDataConsulta.bind(this)} value={this.state.dataConsulta}/></div>
                     <div><input type="text" placeholder="Digite o id do prontuário" onChange={this.atualizaIdProntuario.bind(this)} value={this.state.idProntuario}/>                                      </div>
                 <div><button>Cadastrar</button></div>
+                <p className="text__login" style={{ color : 'green',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.mensagem}</p>                
+                <p className="text__login" style={{ color : 'green',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.Erromensagem}</p>                
+                
                     
                 </form>
                 

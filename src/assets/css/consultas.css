@@ -1,5 +1,6 @@
 table{
-    
+    margin-left: 11%;
+    justify-content: center;
     border: 2px solid #22E096;
     border-radius: 11px;                 
     border-collapse: collapse;

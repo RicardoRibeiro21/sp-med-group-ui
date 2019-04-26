@@ -85,6 +85,7 @@ class Consultas extends Component {
                 <div>
                     <MenuNav />
                     <div>
+                        <h1>Consultas</h1>
                         <table className="bordered striped centered">
                         <tbody>
                         <tr>

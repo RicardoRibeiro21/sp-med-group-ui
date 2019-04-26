@@ -11,7 +11,9 @@ class Usuarios extends  Component{
             Nome: "",
             Senha:"",
             Email: "",
-            IdTipoUsuario:"" ,            
+            IdTipoUsuario:"" ,    
+            mensagem: "",
+            erro: ""        
         }        
     }
     componentDidMount(){
@@ -35,8 +37,8 @@ class Usuarios extends  Component{
         }
         )        
         .then(resposta => resposta)
-        .then(this.CarregarUsuarios())
-        .catch( erro => console.log(erro))
+        .then(this.CarregarUsuarios(), this.setState({mensagem: "Cadastro feito com sucesso!"}))
+        .catch(this.setState({erromensagem: "Dados preenchidos incorretamente."}))    
         console.log(this.state.Email);
         
        
@@ -83,15 +85,16 @@ class Usuarios extends  Component{
                }   
             })
            .then(resposta => resposta.json())
-           .then(data => this.setState({listaUsuarios : data}))
-           .catch(erro => console.log(erro))
+    .then(data => this.setState({listaUsuarios : data}))
+        .catch(erro => console.log(erro))
     }
         
         render(){
             return(
                 <div>
                     <MenuNav />
-                    <div>                    
+                    <div>
+                    <h1>Usuários</h1>                    
                         <table>
                         <tbody>
                             <tr>
@@ -119,6 +122,7 @@ class Usuarios extends  Component{
                         </table>
                     </div>
                      {/* Form para cadastrar Usuarios */}
+                     <h2>Cadastro de Usuários</h2>
                 <form className="cadastro-user" onSubmit = {this.cadastrarUsuario.bind(this)}>
                     <input type="text" placeholder="Nome do Usuário" onChange={this.atualizaEstadoNome.bind(this)} value={this.state.Nome}/>                                      
                     <input type="text" placeholder="Senha" onChange={this.atualizaEstadoSenha.bind(this)} value={this.state.Senha}/>                                      
@@ -134,6 +138,9 @@ class Usuarios extends  Component{
                     }                       
                     </select>
                     <button>Cadastrar</button>
+                    <p className="text__login" style={{ color : 'blue',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.mensagem}</p>                
+                <p className="text__login" style={{ color : 'red',  textAlign : 'center', fontSize : '1.6em' }}>{this.state.erromensagem}</p>             
+            
                 </form>
                 </div>
             );
