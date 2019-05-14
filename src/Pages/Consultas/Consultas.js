@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { parseJwt } from '../../Services/authenticacao/authenticacao';
 import '../../assets/css/consultas.css'
 import MenuNav from '../../Components/menuNav';
+import { Link } from 'react-router-dom';
 const URL   = 'http://localhost:5001/api/Consultas';
+
 class Consultas extends Component {
     constructor(){
         let usuario = parseJwt();
@@ -89,7 +91,7 @@ class Consultas extends Component {
                         <table className="bordered striped centered">
                         <tbody>
                         <tr>
-                                            <th>Código</th>
+                                            <th className="Codigo">Código</th>
                                             <th>Crm Médico</th>
                                             <th>Id Médico</th>
                                             <th>Cpf</th>
@@ -97,20 +99,22 @@ class Consultas extends Component {
                                             <th>Situação da Consulta</th>
                                             <th>Data Da consulta</th>
                                             <th>Resultado</th>
+                                            <th>Atualizar</th>
                                             </tr>       
                             
                         {
                             this.state.consultas.map(function(consulta){
                                 return(
                                 <tr key={consulta.id}>
-                                <td>Código consulta {consulta.id}</td>
-                                <td>Crm Médico  {consulta.crmMedico}</td>
+                                <td className="Codigo">Código consulta {consulta.id}</td>
+                                <td>Crm Médico {consulta.crmMedicoNavigation.crm}</td>
                                 <td>Id  {consulta.crmMedicoNavigation.idUsuario}</td>
                                 <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
                                 <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
                                 <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
                                 <td>Data da Consulta  {consulta.dataConsulta}</td>
                                 <td>Resultado  {consulta.resultado}</td>
+                                <td><a href={`/Consultas/Atualizar?id=${consulta.id}`}>Atualizar</a></td>
                                 </tr>);                            
                             })
                         }
@@ -129,7 +133,7 @@ class Consultas extends Component {
                             <table>
                             <tbody>
                             <tr>
-                                            <th>Código</th>
+                                            <th className="Codigo">Código</th>
                                             <th>Crm Médico</th>
                                             <th>Médico (Pendente)</th>
                                             <th>Cpf</th>
@@ -142,7 +146,7 @@ class Consultas extends Component {
                                 this.state.consultas.map(function(consulta){
                                     return(
                                     <tr key={consulta.id}>
-                                    <td>{consulta.id}</td>
+                                    <td className="Codigo">{consulta.id}</td>
                                     <td>{consulta.crmMedicoNavigation.crm}</td>
                                     <td>{consulta.crmMedicoNavigation.idUsuarioNavigation.id}</td>
                                     <td>{consulta.idProntuarioNavigation.cpf}</td>
@@ -158,7 +162,8 @@ class Consultas extends Component {
                         </div>
                     </div>
                 );
-            } else{
+            } else {
+                
                 return(
                     //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
                     <div>
@@ -167,7 +172,8 @@ class Consultas extends Component {
                             <table>
                                 <tbody>
                                           <tr>
-                                            <th>Código</th>
+                                            <th className="Codigo">Código</th>
+                                            <th>Medico</th>
                                             <th>Paciente</th>
                                             <th>Cpf</th>
                                             <th>Rg</th>
@@ -179,13 +185,15 @@ class Consultas extends Component {
                                 this.state.consultas.map(function(consulta){
                                     return(
                                     <tr key={consulta.id}>
-                                    <td> {consulta.id}</td>
+                                    <td className="Codigo"> {consulta.id}</td>
+                                    <td>  {consulta.crmMedicoNavigation.crm}</td>
                                     <td>  {consulta.idProntuarioNavigation.idUsuarioNavigation.nome}</td>
                                     <td>  {consulta.idProntuarioNavigation.cpf}</td>
                                     <td>  {consulta.idProntuarioNavigation.rg}</td>
                                     <td> {consulta.statusConsultaNavigation.situacao}</td>
                                     <td> {consulta.dataConsulta}</td>
                                     <td>  {consulta.resultado}</td>
+                                    <td><a href={`/Atualizar?id=${consulta.id}`}>Atualizar</a></td>
                                     </tr>
                                     );                            
                                 })

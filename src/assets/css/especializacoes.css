@@ -39,7 +39,7 @@ li a:hover{
     width: 80%;
     text-align:center;
     align-items: center;
-    margin: 10%;
+    margin: 0 10%;
     display:grid;
     grid-template-columns: 27% 27% 27%;
     grid-gap: 0 10%;
