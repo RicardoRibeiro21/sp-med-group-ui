@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { parseJwt } from '../../Services/authenticacao/authenticacao';
 import '../../assets/css/consultas.css'
 import MenuNav from '../../Components/menuNav';
-import { Link } from 'react-router-dom';
+
 const URL   = 'http://localhost:5001/api/Consultas';
 
 class Consultas extends Component {
