@@ -16,8 +16,7 @@ class Cadastros extends Component{
             listaProntuario: [] ,            
             listaMedicos: [],  
             mensagem: "",  
-            Erromensagem: ""          
-                      
+            Erromensagem: "",                              
         }     
     }
     ///Carregar antes da página
@@ -73,12 +72,11 @@ class Cadastros extends Component{
         )        
         .then(resposta => resposta, this.setState({mensagem: "Cadastro feito com sucesso!"}))
         .then()
-        .catch(this.setState({Erromensagem: "Dados preenchidos incorretamente."}))        
+        .catch(this.setState({Erromensagem: "Dados preenchidos incorretamente."}))  
+
     }
     //-----------------------Fim para cadastrar Consulta------------------------\\
-
    
-
     render(){
         return(
             <div>
