@@ -98,7 +98,7 @@ class AtualizarConsultas extends Component {
                 <h1>Atualizar Consultas</h1>
                 <form className="grid-form" onSubmit={this.atualizarConsulta.bind(this)}>
                     <div><select value={this.state.CrmMedico} onChange={this.atualizaCrmMedico.bind(this)}>
-                        <option  >Selecione o Médico</option>
+                        <option>Selecione o Médico</option>
                         {
                             this.state.listaMedicos.map((element) => {
                                 return <option key={element.crm} value={element.crm}>{element.idUsuarioNavigation.nome}</option>
