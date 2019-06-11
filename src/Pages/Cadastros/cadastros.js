@@ -3,7 +3,7 @@ import ApiService from '../../Services/ApiService';
 import '../../assets/css/cadastros.css';
 import MenuNav from '../../Components/menuNav';
 
-const URL   = 'http://localhost:5001/api/Medicos';
+const URL   = 'http://192.168.3.96:5000/api/Medicos';
 class Cadastros extends Component{
     constructor(){
         super();
@@ -58,7 +58,7 @@ class Cadastros extends Component{
     cadastrarConsulta(event){
         event.preventDefault();
         
-        fetch('http://localhost:5001/api/Consultas', {
+        fetch('http://192.168.3.96:5000/api/Consultas', {
             method: 'POST',
             body: JSON.stringify({ CrmMedico: this.state.CrmMedico,
                 dataConsulta: this.state.dataConsulta ,
@@ -75,6 +75,7 @@ class Cadastros extends Component{
         .catch(this.setState({Erromensagem: "Dados preenchidos incorretamente."}))  
 
     }
+   
     //-----------------------Fim para cadastrar Consulta------------------------\\
    
     render(){

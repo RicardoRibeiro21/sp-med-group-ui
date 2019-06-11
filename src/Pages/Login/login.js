@@ -26,7 +26,7 @@ class Login extends Component {
         event.preventDefault();
         // alert(this.state.email + " - " + this.state.senha);
 
-        Axios.post('http://localhost:5001/api/login', {
+        Axios.post('http://192.168.3.96:5000/api/login', {
             email: this.state.email,
             senha: this.state.senha
         })
@@ -37,7 +37,7 @@ class Login extends Component {
                     localStorage.setItem("usuario-spmedgroup", data.data.token);
                     //Role customizada para conseguirmos pegar o link 
                     console.log(parseJwt());
-
+                    console.log(data.data.token);
                     if (parseJwt().Role === "Administrador") {
                         this.props.history.push("/Cadastros/cadastros")
                     } else {

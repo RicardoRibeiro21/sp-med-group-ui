@@ -16,7 +16,7 @@ class Especializacao extends Component{
     }
 
     carregarEspecializacoes(){
-        fetch('http://localhost:5001/api/Especializacao')
+        fetch('http://192.168.3.96:5000/api/Especializacao')
         .then(resposta => resposta.json())
         .then(data => this.setState({listaEspecializacoes : data}))
         .catch(erro => {console.log(erro)})

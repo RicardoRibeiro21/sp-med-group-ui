@@ -3,7 +3,7 @@ import { parseJwt } from '../../Services/authenticacao/authenticacao';
 import '../../assets/css/consultas.css'
 import MenuNav from '../../Components/menuNav';
 
-const URL   = 'http://localhost:5001/api/Consultas';
+const URL   = 'http://192.168.3.96:5000/api/Consultas';
 
 class Consultas extends Component {
     constructor(){
@@ -35,7 +35,7 @@ class Consultas extends Component {
 		switch (this.state.Usuario.tipo) {
 			case "Comum":
 			
-            fetch('http://localhost:5001/api/Usuarios/minhasConsultas',
+            fetch('http://192.168.3.96:5000/api/Usuarios/minhasConsultas',
                 {
                    method: 'GET',
                    headers: {
@@ -58,11 +58,11 @@ class Consultas extends Component {
                     })
                    .then(resposta => resposta.json())
                    .then(data => this.setState({consultas : data}))
-                   .catch(erro => console.log(erro))
+                   .catch(erro => console.log(erro))                   
                     break;
 			case "Medico":
 			
-            fetch('http://localhost:5001/api/Medicos/minhasConsultas',
+            fetch('http://192.168.3.96:5000/api/Medicos/minhasConsultas',
                 {
                    method: 'GET',
                    headers: {
@@ -81,7 +81,7 @@ class Consultas extends Component {
     }
 
     render(){        
-        if(parseJwt() === "Administrador"){                      
+        if(parseJwt().Role === "Administrador"){                      
             return(
 
                 <div>
@@ -106,14 +106,14 @@ class Consultas extends Component {
                             this.state.consultas.map(function(consulta){
                                 return(
                                 <tr key={consulta.id}>
-                                <td className="Codigo">Código consulta {consulta.id}</td>
-                                <td>Crm Médico {consulta.crmMedicoNavigation.crm}</td>
-                                <td>Id  {consulta.crmMedicoNavigation.idUsuario}</td>
-                                <td>Cpf  {consulta.idProntuarioNavigation.cpf}</td>
-                                <td>Rg  {consulta.idProntuarioNavigation.rg}</td>
-                                <td>Status Consulta {consulta.statusConsultaNavigation.situacao}</td>
-                                <td>Data da Consulta  {consulta.dataConsulta}</td>
-                                <td>Resultado  {consulta.resultado}</td>
+                                <td className="Codigo"> {consulta.id}</td>
+                                <td> {consulta.crmMedicoNavigation.crm}</td>
+                                <td> {consulta.crmMedicoNavigation.idUsuario}</td>
+                                <td> {consulta.idProntuarioNavigation.cpf}</td>
+                                <td>  {consulta.idProntuarioNavigation.rg}</td>
+                                <td> {consulta.statusConsultaNavigation.situacao}</td>
+                                <td>  {consulta.dataConsulta}</td>
+                                <td> {consulta.resultado}</td>
                                 <td><a href={`/Consultas/Atualizar?id=${consulta.id}`}>Atualizar</a></td>
                                 </tr>);                            
                             })
@@ -124,7 +124,7 @@ class Consultas extends Component {
                 </div>
             );
         }    else {       
-            if (parseJwt() === "Comum") {
+            if (parseJwt().Role === "Comum") {
                 return(
                     //AQUI FAZER UM IF PARA RETORNAR AS CONSULTAS DO MEDICO OU USUARIO
                     <div>
@@ -178,14 +178,14 @@ class Consultas extends Component {
                                             <th>Cpf</th>
                                             <th>Rg</th>
                                             <th>Situação da Consulta</th>
-                                            <th>Data Da consulta</th>
+                                            <th>Data da consulta</th>
                                             <th>Resultado</th>
                                             </tr>                                                                        
                             {
                                 this.state.consultas.map(function(consulta){
                                     return(
                                     <tr key={consulta.id}>
-                                    <td className="Codigo"> {consulta.id}</td>
+                                    <td className="Codigo"> {consulta.id    }</td>
                                     <td>  {consulta.crmMedicoNavigation.crm}</td>
                                     <td>  {consulta.idProntuarioNavigation.idUsuarioNavigation.nome}</td>
                                     <td>  {consulta.idProntuarioNavigation.cpf}</td>

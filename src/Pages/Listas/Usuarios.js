@@ -23,7 +23,7 @@ class Usuarios extends  Component{
      //-----------------------Métodos para cadastrar Usuario------------------------\\
      cadastrarUsuario(event){
         event.preventDefault();
-        fetch('http://localhost:5001/api/Usuarios', {
+        fetch('http://192.168.3.96:5000/api/Usuarios', {
             method: 'POST',
             body: JSON.stringify({ Nome: this.state.Nome,
                 Email: this.state.Email,
@@ -61,7 +61,7 @@ class Usuarios extends  Component{
     }
 
     buscarTipoUsuario(){
-        fetch('http://localhost:5001/api/TipoUsuario',
+        fetch('http://192.168.3.96:5000/api/TipoUsuario',
             {
                method: 'GET',
                headers: {
@@ -76,7 +76,7 @@ class Usuarios extends  Component{
     
     //-----------------------Fim para cadastrar Usuario------------------------\\
     CarregarUsuarios(){
-            fetch('http://localhost:5001/api/Usuarios',
+            fetch('http://192.168.3.96:5000/api/Usuarios',
             {
                method: 'GET',
                headers: {

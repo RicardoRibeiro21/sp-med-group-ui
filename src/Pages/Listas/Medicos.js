@@ -23,7 +23,7 @@ class Medicos extends  Component{
         this.CarregarUsuarios();
     }
     CarregarUsuarios(){
-        fetch('http://localhost:5001/api/Usuarios',
+        fetch('http://192.168.3.96:5000/api/Usuarios',
         {
            method: 'GET',
            headers: {
@@ -36,7 +36,7 @@ class Medicos extends  Component{
        .catch(erro => console.log(erro))
     }
     CarregarMedicos(){
-    fetch('http://localhost:5001/api/Medicos',
+    fetch('http://192.168.3.96:5000/api/Medicos',
     {
        method: 'GET',
        headers: {
@@ -49,7 +49,7 @@ class Medicos extends  Component{
    .catch(erro => console.log(erro))
     }
     CarregarEspecializacoes(){
-    fetch('http://localhost:5001/api/Especializacao ',
+    fetch('http://192.168.3.96:5000/api/Especializacao ',
         {
            method: 'GET',
            headers: {
@@ -66,7 +66,7 @@ class Medicos extends  Component{
      //-----------------------Métodos para cadastrar Medico------------------------\\
      cadastrarMedico(event){
         event.preventDefault();                        
-        fetch('http://localhost:5001/api/Medicos', {
+        fetch('http://192.168.3.96:5000/api/Medicos', {
             
             method: 'POST',
             body: JSON.stringify({ 

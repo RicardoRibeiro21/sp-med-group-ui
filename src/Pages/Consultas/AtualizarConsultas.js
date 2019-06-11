@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MenuNav from '../../Components/menuNav';
 
-const URL = 'http://localhost:5001/api/Medicos';
+const URL = 'http://192.168.3.96:5000/api/Medicos';
 class AtualizarConsultas extends Component {
     constructor() {
         super();
@@ -31,7 +31,7 @@ class AtualizarConsultas extends Component {
     atualizarConsulta(event) {
         event.preventDefault();
 
-        fetch('http://localhost:5001/api/Consultas', {
+        fetch('http://192.168.3.96:5000/api/Consultas', {
             method: 'PUT',
             body: JSON.stringify({
                 id: this.state.idConsulta,
@@ -65,7 +65,7 @@ class AtualizarConsultas extends Component {
             .catch(erro => console.log(erro))
     }
     carregarStatusConsulta() {
-        fetch("http://localhost:5001/api/StatusConsulta",
+        fetch("http://192.168.3.96:5000/api/StatusConsulta",
             {
                 method: 'GET',
                 headers: {
